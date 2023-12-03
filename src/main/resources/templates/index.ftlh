@@ -1,3 +1,4 @@
+[#ftl]
 <!DOCTYPE html>
 <html lang="cs">
 <head>

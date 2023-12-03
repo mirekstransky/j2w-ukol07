@@ -1,17 +1,18 @@
-package entity;
+package cz.czechitas.java2webapps.ukol7.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
 @Entity
 public class Post {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -28,6 +29,9 @@ public class Post {
     private String perex;
     @NotNull
     private String body;
+
+    @PastOrPresent
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate published;
 
     public Post() {

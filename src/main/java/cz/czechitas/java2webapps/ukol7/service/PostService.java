@@ -1,6 +1,8 @@
 package cz.czechitas.java2webapps.ukol7.service;
 
 import cz.czechitas.java2webapps.ukol7.entity.Post;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import cz.czechitas.java2webapps.ukol7.repository.PostRepository;
 
@@ -14,8 +16,8 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public List<Post> findAll(){
+    public Page<Post> findAll(Pageable pageable){
 
-        return postRepository.findAll();
+        return postRepository.findAll(pageable);
     }
 }

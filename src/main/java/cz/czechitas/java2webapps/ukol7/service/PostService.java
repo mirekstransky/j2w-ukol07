@@ -23,6 +23,12 @@ public class PostService {
 
         return postRepository.findByPublishedBeforeOrderByPublishedDesc(date, pageable);
     }
+    public void deleteById(long id){
+        postRepository.deleteById(id);
+    }
+    public void pridatOsobu(Post post){
+
+    }
 
     public Post findBySlug(String slug)    {
         return postRepository.findBySlug(slug);

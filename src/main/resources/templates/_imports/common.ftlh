@@ -18,3 +18,32 @@
     </body>
     </html>
 [/#macro]
+
+
+[#macro totalCount]
+    <div class="totalCount">
+        [#if osoby.totalElements == 1]
+            Celkem nalezen <strong>${osoby.totalElements}</strong> záznam.
+        [#elseif osoby.totalElements <= 4]
+            Celkem nalezeny <strong>${osoby.totalElements}</strong> záznamy.
+        [#else ]
+            Celkem nalezeno <strong>${osoby.totalElements}</strong> záznamů.
+        [/#if]
+    </div>
+
+[/#macro]
+
+[#macro pager]
+    <div class="pager">
+        [@pagerLink page=blogy.number - 1 active=blogy.first text="←" /]
+        [@pagerLink page=blogy.number + 1 active=blogy.last text="→" /]
+    </div>
+[/#macro]
+
+[#macro pagerLink page text active]
+    [#if active]
+        <span class="page active">${text}</span>
+    [#else ]
+        <a href="${createURL({"size": blogy.size, "page": page})}" class="page">${text}</a>
+    [/#if]
+[/#macro]

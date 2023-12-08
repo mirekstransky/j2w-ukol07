@@ -9,8 +9,5 @@ CREATE TABLE post
     published DATE
 );
 
-CREATE
-    INDEX ON post(published);
+CREATE INDEX ON post(published);
 
-INSERT INTO post (slug, author, title, perex, body, published)
-VALUES ('/url', 'Dita Formánková', 'Moje cesta', 'Moje životní cesta', 'Tohle je moje životní cesta kterou vám ukáži',null);

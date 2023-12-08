@@ -2,11 +2,12 @@ package cz.czechitas.java2webapps.ukol7.service;
 
 import cz.czechitas.java2webapps.ukol7.entity.Post;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import cz.czechitas.java2webapps.ukol7.repository.PostRepository;
 
-import java.util.List;
+import java.time.LocalDate;
 
 @Service
 public class PostService {
@@ -16,8 +17,14 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public Page<Post> findAll(Pageable pageable){
+    public Page<Post> list(Pageable pageable){
+        pageable = PageRequest.of(pageable.getPageNumber(), 5);
+        LocalDate date = LocalDate.now();
 
-        return postRepository.findAll(pageable);
+        return postRepository.findByPublishedBeforeOrderByPublishedDesc(date, pageable);
+    }
+
+    public Post findBySlug(String slug)    {
+        return postRepository.findBySlug(slug);
     }
 }

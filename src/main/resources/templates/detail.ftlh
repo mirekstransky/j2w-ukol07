@@ -10,8 +10,12 @@
          </div>
 
          <div class="odstavce-text">
-             ${detailSlug.perex?no_esc}
-             ${detailSlug.body?no_esc}
+             <div class="perex">
+                ${detailSlug.perex?no_esc}
+             </div>
+             <div class="post-body">
+                ${detailSlug.body?no_esc}
+             </div>
          </div>
       </div>
 

@@ -26,7 +26,7 @@
 [#--                <td>${blog.perex!x}</td>--]
                 <td>${blog.published?date}</td>
                 <td>${blog.author!x}</td>
-                <td><a class="btn btn--outline" href="/post/${blog.slug}">Odkaz</a></td>
+                <td><a class="btn btn--outline" href="/post/${blog.slug}">Přečíst</a></td>
             </tr>
         [/#items]
     [/#list]

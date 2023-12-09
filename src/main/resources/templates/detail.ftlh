@@ -6,7 +6,7 @@
          <h1 class="heading-primary">${detailSlug.title}</h1>
          <div class="heading-author">
             <img class="author-img" src="https://thispersondoesnotexist.com/" alt="Author">
-            <h2 class="heading-secondary">${detailSlug.author}</h2>
+            <h2 class="heading-secondary">${detailSlug.author.name}</h2>
          </div>
 
          <div class="odstavce-text">

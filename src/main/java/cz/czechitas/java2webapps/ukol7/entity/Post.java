@@ -1,9 +1,6 @@
 package cz.czechitas.java2webapps.ukol7.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import org.hibernate.validator.constraints.Length;
@@ -15,13 +12,12 @@ import java.time.LocalDate;
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     @NotNull
     @Length(max = 100)
     private String slug;
-    @NotNull
-    @Length(max = 100)
-    private String author;
+    @ManyToOne
+    private Author author;
     @NotNull
     @Length(max = 255)
     private String title;
@@ -29,29 +25,17 @@ public class Post {
     private String perex;
     @NotNull
     private String body;
-
     @PastOrPresent
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate published;
 
-    public Post() {
-    }
-
-    public Post(long id, String slug, String author, String title, String perex, String body, LocalDate published) {
-        this.id = id;
-        this.slug = slug;
-        this.author = author;
-        this.title = title;
-        this.perex = perex;
-        this.body = body;
-        this.published = published;
-    }
+    public Post(){}
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -63,11 +47,11 @@ public class Post {
         this.slug = slug;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Author author) {
         this.author = author;
     }
 

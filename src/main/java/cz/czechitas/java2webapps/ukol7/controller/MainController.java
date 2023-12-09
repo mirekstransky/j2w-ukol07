@@ -27,7 +27,6 @@ public class MainController {
 
     @GetMapping("/")
     public ModelAndView index(Pageable pageable) {
-
         ModelAndView model = new ModelAndView("seznam");
         model.addObject("blogy", postService.list(pageable));
         return model;
@@ -41,7 +40,7 @@ public class MainController {
     @GetMapping("/delete/{id}")
     public String deletePost(@PathVariable long id){
         postService.deleteById(id);
-        return "redirect:/";
+        return "redirect:/administrace";
     }
 
     @GetMapping("/novy")
@@ -49,4 +48,12 @@ public class MainController {
         return new ModelAndView("detail")
                 .addObject("blogy", new Post());
     }
+
+    @GetMapping("/administrace")
+    public ModelAndView administrace(Pageable pageable) {
+        ModelAndView model = new ModelAndView("administrace");
+        model.addObject("blogy", postService.list(pageable));
+        return model;
+    }
+
 }

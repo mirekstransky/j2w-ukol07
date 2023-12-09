@@ -18,7 +18,7 @@ public class PostService {
     }
 
     public Page<Post> list(Pageable pageable){
-        pageable = PageRequest.of(pageable.getPageNumber(), 5);
+        pageable = PageRequest.of(pageable.getPageNumber(), 20);
         LocalDate date = LocalDate.now();
 
         return postRepository.findByPublishedBeforeOrderByPublishedDesc(date, pageable);

@@ -45,8 +45,7 @@ public class MainController {
 
     @GetMapping("/novy")
     public ModelAndView novy() {
-        return new ModelAndView("detail")
-                .addObject("blogy", new Post());
+        return new ModelAndView("novy");
     }
 
     @GetMapping("/administrace")

@@ -4,7 +4,11 @@
     <div class="container">
     <div class="heading">
         <h1 class="heading-primary">Administrace blogových zápisků</h1>
-        <a href="/" class="btn btn--full admin">Zpět</a>
+        <div class="navigation">
+            <a href="/novy" class="btn btn--full admin">Vložit</a>
+            <a href="/" class="btn btn--full admin">Zpět</a>
+        </div>
+
     </div>
     [#list blogy.content]
     <table class="table">

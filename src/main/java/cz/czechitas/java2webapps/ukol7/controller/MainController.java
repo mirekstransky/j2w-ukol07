@@ -1,6 +1,7 @@
 package cz.czechitas.java2webapps.ukol7.controller;
 
 import cz.czechitas.java2webapps.ukol7.entity.Post;
+import cz.czechitas.java2webapps.ukol7.service.AuthorService;
 import jakarta.validation.Valid;
 import org.springframework.boot.Banner;
 import org.springframework.data.domain.PageRequest;
@@ -19,10 +20,12 @@ import org.springframework.data.domain.Pageable;
 @Controller
 public class MainController {
     private final PostService postService;
+    private final AuthorService authorService;
 
-    public MainController(PostService postService)
+    public MainController(PostService postService,AuthorService authorService)
     {
         this.postService = postService;
+        this.authorService = authorService;
     }
 
     @GetMapping("/")
@@ -45,14 +48,24 @@ public class MainController {
 
     @GetMapping("/novy")
     public ModelAndView novy() {
-        return new ModelAndView("novy");
+        ModelAndView model = new ModelAndView("novy");
+        model.addObject("post",new Post());
+        return model;
     }
+    @PostMapping("/nahraj")
+    public String ulozit(@ModelAttribute("post") @Valid Post post) {
 
+        authorService.pridatObjekt(post.getAuthor());
+        postService.pridatObjekt(post);
+
+        return "redirect:/";
+    }
     @GetMapping("/administrace")
     public ModelAndView administrace(Pageable pageable) {
         ModelAndView model = new ModelAndView("administrace");
         model.addObject("blogy", postService.list(pageable));
         return model;
     }
+
 
 }

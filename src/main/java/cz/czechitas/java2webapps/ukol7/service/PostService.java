@@ -1,6 +1,8 @@
 package cz.czechitas.java2webapps.ukol7.service;
 
+import cz.czechitas.java2webapps.ukol7.entity.Author;
 import cz.czechitas.java2webapps.ukol7.entity.Post;
+import cz.czechitas.java2webapps.ukol7.repository.AuthorRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -13,6 +15,7 @@ import java.time.LocalDate;
 public class PostService {
 
     private final PostRepository postRepository;
+
     public PostService(PostRepository postRepository) {
         this.postRepository = postRepository;
     }
@@ -26,8 +29,8 @@ public class PostService {
     public void deleteById(long id){
         postRepository.deleteById(id);
     }
-    public void pridatOsobu(Post post){
-
+    public void pridatObjekt(Post post){
+        postRepository.save(post);
     }
 
     public Post findBySlug(String slug)    {

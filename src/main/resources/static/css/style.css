@@ -242,6 +242,7 @@ tbody tr:nth-child(even) {
 
     /* top / horizontal / left */
     padding: 4.8rem 0 12.8rem;
+
 }
 
 .cta {
@@ -253,11 +254,13 @@ tbody tr:nth-child(even) {
 
     background-image: linear-gradient(to right bottom, #eb984e, #e67e22);
     overflow: hidden;
+    position: relative;
 }
 
 .cta-text-box {
     padding: 4.8rem 6.4rem 6.4rem 6.4rem;
     color: #45260a;
+
 }
 
 .cta .heading-secondary {
@@ -296,7 +299,7 @@ tbody tr:nth-child(even) {
     font-weight: 500;
     margin-bottom: 1.2rem;
 }
-
+.cta-form textarea,
 .cta-form input,
 .cta-form select {
     width: 100%;
@@ -348,4 +351,16 @@ tbody tr:nth-child(even) {
     /* Put transition on original "state" */
     /* transition: background-color 0.3s; */
     transition: all 0.3s;
+}
+.body-form{
+    grid-column: 1/-1;
+    grid-row: 4/5;
+}
+.body-form input, .body-form textarea{
+    height: 26rem;
+    text-align: start;
+    vertical-align: top;
+}
+.cta:first-child{
+    overflow: visible;
 }
